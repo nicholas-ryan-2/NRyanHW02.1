@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var textInput: UITextField!
+    @IBOutlet weak var conversionMessage: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +21,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func convertButton(_ sender: UIButton) {
+        let miles = Double(textInput.text!)
+        if let miles = miles {
+            let km = miles * 1.6
+            conversionMessage.text = "\(miles) miles is \(km) kilometers."
+        } else {
+            conversionMessage.text = "Error: \(miles!) is not a valid input."
+        }
 }
-
+}
